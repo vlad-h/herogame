@@ -1,0 +1,20 @@
+{
+    "name": "vladm/emaghero",
+    "description": "Hero game",
+    "require": {
+        "symfony/console": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HeroGame\\": "src/HeroGame"
+        }
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Hogas Vlad Marius",
+            "email": "vladm.hogas@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
