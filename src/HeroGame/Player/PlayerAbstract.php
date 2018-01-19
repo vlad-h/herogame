@@ -33,6 +33,11 @@ abstract class PlayerAbstract
     protected $luck;
 
     /**
+     * @var bool
+     */
+    protected $isLucky = false;
+
+    /**
      * Constructor class
      * @param array $config Player configuration
      */
@@ -51,7 +56,7 @@ abstract class PlayerAbstract
      */
     public function getSpeed() : int
     {
-      return $this->speed;
+        return $this->speed;
     }
 
     /**
@@ -59,7 +64,7 @@ abstract class PlayerAbstract
      */
     public function getLuck() : int
     {
-      return $this->luck;
+        return $this->luck;
     }
 
     /**
@@ -67,7 +72,7 @@ abstract class PlayerAbstract
      */
     public function getName() : string
     {
-      return $this->name;
+        return $this->name;
     }
 
     /**
@@ -75,7 +80,7 @@ abstract class PlayerAbstract
      */
     public function getType() : string
     {
-      return $this->type;
+        return $this->type;
     }
 
     /**
@@ -83,7 +88,7 @@ abstract class PlayerAbstract
      */
     public function getHealth() : int
     {
-      return $this->health;
+        return $this->health;
     }
 
     /**
@@ -91,7 +96,7 @@ abstract class PlayerAbstract
      */
     public function getStrength() : int
     {
-      return $this->strength;
+        return $this->strength;
     }
 
     /**
@@ -99,6 +104,55 @@ abstract class PlayerAbstract
      */
     public function getDefence() : int
     {
-      return $this->defence;
+        return $this->defence;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDead() : bool
+    {
+        return $this->health > 0 ? false : true;
+    }
+
+    /**
+     * Calculate player probability
+     * @param  int $probability
+     * @return bool
+     */
+    public function checkProbability(int $probability) : bool
+    {
+        $random = rand(0, 99);
+
+        return $random <= $probability;
+    }
+
+    /**
+     * @param  int $damage
+     * @return int New health
+     */
+    public function receiveDamage(int $damage) : int
+    {
+        $this->health = $this->health - $damage;
+
+        return $this->health;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLucky() : bool
+    {
+        return $this->isLucky;
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkPlayersLuck() : bool
+    {
+        $this->isLucky = $this->checkProbability($this->luck);
+
+        return $this->isLucky;
     }
 }

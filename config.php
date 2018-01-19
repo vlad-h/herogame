@@ -1,5 +1,6 @@
 <?php
 const CONFIG = [
+  'GAME_ROUNDS' => 20,
   'HERO' => [
     'health' => ['min' => 70, 'max' => 100],
     'strength' => ['min' => 70, 'max' => 80],

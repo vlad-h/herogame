@@ -4,13 +4,13 @@ namespace HeroGame\Player;
 
 class PlayerFactory
 {
-  /**
-   * The is the factory which creates player objects
-   * @param  array  $config
-   * @param  string $type
-   * @throws Exception if the $type is not hero or beast
-   * @return Hero|Beast
-   */
+    /**
+     * The is the factory which creates player objects
+     * @param  array  $config
+     * @param  string $type
+     * @throws Exception if the $type is not hero or beast
+     * @return Hero|Beast
+     */
     public static function factory(array $config, string $type = 'hero') : IPlayer
     {
         switch ($type) {

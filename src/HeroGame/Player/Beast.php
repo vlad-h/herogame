@@ -7,13 +7,13 @@ namespace HeroGame\Player;
  */
 class Beast extends PlayerAbstract implements IPlayer
 {
-  /**
-   * @var string
-   */
-  protected $name = 'Diablo';
+    /**
+     * @var string
+     */
+    protected $name = 'Diablo';
 
-  /**
-   * @var string
-   */
-  protected $type = 'beast';
+    /**
+     * @var string
+     */
+    protected $type = 'beast';
 }
