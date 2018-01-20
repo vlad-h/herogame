@@ -38,6 +38,11 @@ abstract class PlayerAbstract
     protected $isLucky = false;
 
     /**
+     * @var array
+     */
+    protected $skills = [];
+
+    /**
      * Constructor class
      * @param array $config Player configuration
      */
@@ -154,5 +159,13 @@ abstract class PlayerAbstract
         $this->isLucky = $this->checkProbability($this->luck);
 
         return $this->isLucky;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSkills() : array
+    {
+        return $this->skills;
     }
 }

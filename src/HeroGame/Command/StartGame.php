@@ -34,7 +34,7 @@ class StartGame extends Command
         $this->displayPlayers($output, $hero, $beast);
 
         $output->writeln("<info>The first player that will attack is {$firstPlayer->getName()} ({$firstPlayer->getType()})</info>");
-        $output->writeln("\n<info>START BATTLE<info>\n");
+        $output->writeln("\n<info>START BATTLE</info>\n");
 
         $roundsData = [];
         while (!$game->isGameOver()) {
@@ -68,13 +68,13 @@ class StartGame extends Command
           "Round",
           "Attacker",
           "Damage",
-          "DefenderHealth",
-          "DefenderIsLucky",
+          "Defender Health",
+          "Defender Is Lucky",
           "Skill"
         ]);
 
         foreach ($roundsData as $round) {
-            $table->addRow([$round['round'], $round['attacker'], $round['damage'], $round['defender_health'], $round['is_lucky'], '']);
+            $table->addRow([$round['round'], $round['attacker'], $round['damage'], $round['defender_health'], $round['is_lucky'], $round['skill_used']]);
         }
 
         $table->render();

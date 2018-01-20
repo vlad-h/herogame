@@ -1,6 +1,7 @@
 <?php
 const CONFIG = [
   'GAME_ROUNDS' => 20,
+  'HERO_SKILLS' => ['Rapid Strike', 'Magic Shield'],
   'HERO' => [
     'health' => ['min' => 70, 'max' => 100],
     'strength' => ['min' => 70, 'max' => 80],
