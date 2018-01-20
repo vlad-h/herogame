@@ -39,6 +39,7 @@ class StartGame extends Command
         while (!$game->isGameOver()) {
             $roundsData[] = $game->battleRound();
         }
+        
         $this->displayBattleRounds($output, $roundsData);
 
         $output->writeln("\nGAME OVER\n");

@@ -16,5 +16,11 @@
             "email": "vladm.hogas@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpspec/phpspec": "^4.3@dev"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
 }

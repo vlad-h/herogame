@@ -126,4 +126,12 @@ class Game
     {
         return $this->attacker->getType() == 'hero' ? $this->beast : $this->hero;
     }
+
+    /**
+     * @return int
+     */
+    public function getRound() : int
+    {
+        return $this->round;
+    }
 }
