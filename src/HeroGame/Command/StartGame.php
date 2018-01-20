@@ -1,4 +1,5 @@
 <?php
+
 namespace HeroGame\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -14,9 +15,9 @@ class StartGame extends Command
     protected function configure()
     {
         $this
-      ->setName('start')
-      ->setDescription('Start Hero Game')
-      ->setHelp('This command allows you to start the game');
+            ->setName('start')
+            ->setDescription('Start Hero Game')
+            ->setHelp('This command allows you to start the game');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -39,15 +40,15 @@ class StartGame extends Command
         while (!$game->isGameOver()) {
             $roundsData[] = $game->battleRound();
         }
-        
+
         $this->displayBattleRounds($output, $roundsData);
 
         $output->writeln("\nGAME OVER\n");
         $winner = $game->decideWinner();
-        if($winner){
+        if ($winner) {
             $output->writeln("The winner is {$winner->getName()}");
         } else {
-          $output->writeln("The battle is a DRAW");
+            $output->writeln("The battle is a DRAW");
         }
     }
 
@@ -55,9 +56,9 @@ class StartGame extends Command
     {
         $table = new Table($output);
         $table->setHeaders([
-          "",
-          $hero->getName()." ({$hero->getType()})",
-          $beast->getName()." ({$beast->getType()})"
+            "",
+            $hero->getName() . " ({$hero->getType()})",
+            $beast->getName() . " ({$beast->getType()})"
         ]);
 
         $table->addRow(['Health', $hero->getHealth(), $beast->getHealth()]);
@@ -73,12 +74,12 @@ class StartGame extends Command
     {
         $table = new Table($output);
         $table->setHeaders([
-          "Round",
-          "Attacker",
-          "Damage",
-          "Defender Health",
-          "Defender Is Lucky",
-          "Skill"
+            "Round",
+            "Attacker",
+            "Damage",
+            "Defender Health",
+            "Defender Is Lucky",
+            "Skill"
         ]);
 
         foreach ($roundsData as $round) {

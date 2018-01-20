@@ -8,15 +8,15 @@ use Prophecy\Argument;
 
 class HeroSpec extends ObjectBehavior
 {
-    public function getMatchers() : array
+    public function getMatchers(): array
     {
         return [
-          'beBetween' => function ($subject, $min, $max) {
-              if ($subject >= $min && $subject <= $max) {
-                  return true;
-              }
-              return false;
-          }
+            'beBetween' => function ($subject, $min, $max) {
+                if ($subject >= $min && $subject <= $max) {
+                    return true;
+                }
+                return false;
+            }
         ];
     }
 

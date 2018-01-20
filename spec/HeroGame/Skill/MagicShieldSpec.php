@@ -8,15 +8,15 @@ use Prophecy\Argument;
 
 class MagicShieldSpec extends ObjectBehavior
 {
-    public function getMatchers() : array
+    public function getMatchers(): array
     {
         return [
-          'beNullOrValue' => function ($subject, $value) {
-              if ($subject == null || $subject == $value) {
-                  return true;
-              }
-              return false;
-          }
+            'beNullOrValue' => function ($subject, $value) {
+                if ($subject == null || $subject == $value) {
+                    return true;
+                }
+                return false;
+            }
         ];
     }
 
@@ -32,6 +32,6 @@ class MagicShieldSpec extends ObjectBehavior
 
     function it_skill_is_execute()
     {
-      $this->execute(50, 'defence')->shouldBeNullOrValue(25);
+        $this->execute(50, 'defence')->shouldBeNullOrValue(25);
     }
 }

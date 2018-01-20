@@ -28,7 +28,7 @@ class MagicShield extends SkillAbstract implements ISkill
     protected $type = 'defence';
 
     /**
-     * @param  int    $value
+     * @param  int $value
      * @param  string $type
      * @return int|null
      */

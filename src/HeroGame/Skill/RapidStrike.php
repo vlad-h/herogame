@@ -29,7 +29,7 @@ class RapidStrike extends SkillAbstract implements ISkill
 
     /**
      * Use the skill
-     * @param  int    $value
+     * @param  int $value
      * @param  string $type
      * @return int|null
      */

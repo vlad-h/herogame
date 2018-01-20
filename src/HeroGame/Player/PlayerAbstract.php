@@ -64,7 +64,7 @@ abstract class PlayerAbstract
     /**
      * @return int
      */
-    public function getSpeed() : int
+    public function getSpeed(): int
     {
         return $this->speed;
     }
@@ -72,7 +72,7 @@ abstract class PlayerAbstract
     /**
      * @return int
      */
-    public function getLuck() : int
+    public function getLuck(): int
     {
         return $this->luck;
     }
@@ -80,7 +80,7 @@ abstract class PlayerAbstract
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -88,7 +88,7 @@ abstract class PlayerAbstract
     /**
      * @return string
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -96,7 +96,7 @@ abstract class PlayerAbstract
     /**
      * @return int
      */
-    public function getHealth() : int
+    public function getHealth(): int
     {
         return $this->health;
     }
@@ -104,7 +104,7 @@ abstract class PlayerAbstract
     /**
      * @return int
      */
-    public function getStrength() : int
+    public function getStrength(): int
     {
         return $this->strength;
     }
@@ -112,7 +112,7 @@ abstract class PlayerAbstract
     /**
      * @return int
      */
-    public function getDefence() : int
+    public function getDefence(): int
     {
         return $this->defence;
     }
@@ -120,7 +120,7 @@ abstract class PlayerAbstract
     /**
      * @return bool
      */
-    public function isDead() : bool
+    public function isDead(): bool
     {
         return $this->health > 0 ? false : true;
     }
@@ -130,7 +130,7 @@ abstract class PlayerAbstract
      * @param  int $probability
      * @return bool
      */
-    public function checkProbability(int $probability) : bool
+    public function checkProbability(int $probability): bool
     {
         $random = rand(0, 99);
 
@@ -141,7 +141,7 @@ abstract class PlayerAbstract
      * @param  int $damage
      * @return int New health
      */
-    public function receiveDamage(int $damage) : int
+    public function receiveDamage(int $damage): int
     {
         $this->health = $this->health - $damage;
 
@@ -151,7 +151,7 @@ abstract class PlayerAbstract
     /**
      * @return bool
      */
-    public function isLucky() : bool
+    public function isLucky(): bool
     {
         return $this->isLucky;
     }
@@ -159,7 +159,7 @@ abstract class PlayerAbstract
     /**
      * @return bool
      */
-    public function checkPlayersLuck() : bool
+    public function checkPlayersLuck(): bool
     {
         $this->isLucky = $this->checkProbability($this->luck);
 
@@ -169,7 +169,7 @@ abstract class PlayerAbstract
     /**
      * @return array
      */
-    public function getSkills() : array
+    public function getSkills(): array
     {
         return $this->skills;
     }
@@ -177,7 +177,7 @@ abstract class PlayerAbstract
     /**
      * @return array
      */
-    public function getUsedSkills() : array
+    public function getUsedSkills(): array
     {
         return $this->usedSkills;
     }

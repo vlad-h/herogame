@@ -60,7 +60,7 @@ class Hero extends PlayerAbstract implements IPlayer
      * @param  IPlayer $attacker
      * @return int
      */
-    public function fight(IPlayer $attacker) : int
+    public function fight(IPlayer $attacker): int
     {
         $isLucky = $this->checkPlayersLuck();
 

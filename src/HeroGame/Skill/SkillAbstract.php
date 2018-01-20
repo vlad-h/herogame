@@ -12,7 +12,7 @@ abstract class SkillAbstract
      * @param  int $probability
      * @return bool
      */
-    public function checkProbability(int $probability) : bool
+    public function checkProbability(int $probability): bool
     {
         $random = rand(0, 99);
 
@@ -22,16 +22,16 @@ abstract class SkillAbstract
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
-      return $this->name;
+        return $this->name;
     }
 
     /**
      * @return string
      */
-    public function getType() : string
+    public function getType(): string
     {
-      return $this->type;
+        return $this->type;
     }
 }

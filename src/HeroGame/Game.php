@@ -44,7 +44,7 @@ class Game
      * Decide who will be the first player that attacks
      * @return IPlayer
      */
-    public function decideFirstPlayer() : IPlayer
+    public function decideFirstPlayer(): IPlayer
     {
         if ($this->hero->getSpeed() !== $this->beast->getSpeed()) {
             $this->attacker = $this->hero->getSpeed() > $this->beast->getSpeed() ? $this->hero : $this->beast;
@@ -57,10 +57,10 @@ class Game
 
     public function decideWinner()
     {
-        if($this->hero->getHealth() > $this->beast->getHealth()){
-          return $this->hero;
-        } else if($this->hero->getHealth() < $this->beast->getHealth()){
-          return $this->beast;
+        if ($this->hero->getHealth() > $this->beast->getHealth()) {
+            return $this->hero;
+        } else if ($this->hero->getHealth() < $this->beast->getHealth()) {
+            return $this->beast;
         }
 
         return null;
@@ -70,7 +70,7 @@ class Game
      * Check if the game is over
      * @return bool
      */
-    public function isGameOver() : bool
+    public function isGameOver(): bool
     {
         if ($this->hero->isDead() || $this->beast->isDead()) {
             return true;
@@ -87,7 +87,7 @@ class Game
      * Player battle turns
      * @return array
      */
-    public function battleRound() : array
+    public function battleRound(): array
     {
         if (!$this->attacker) {
             $this->decideFirstPlayer();
@@ -96,12 +96,12 @@ class Game
         $damage = $this->getDefender()->fight($this->attacker);
 
         $roundData = [
-          'round' => $this->round,
-          'attacker' => $this->attacker->getName(),
-          'defender_health' => $this->getDefender()->getHealth(),
-          'damage' => $damage,
-          'is_lucky' => $this->getDefender()->isLucky(),
-          'skill_used' => $this->attacker->getUsedSkills() ? implode(',', $this->attacker->getUsedSkills()) : implode(',', $this->getDefender()->getUsedSkills())
+            'round' => $this->round,
+            'attacker' => $this->attacker->getName(),
+            'defender_health' => $this->getDefender()->getHealth(),
+            'damage' => $damage,
+            'is_lucky' => $this->getDefender()->isLucky(),
+            'skill_used' => $this->attacker->getUsedSkills() ? implode(',', $this->attacker->getUsedSkills()) : implode(',', $this->getDefender()->getUsedSkills())
         ];
 
         $this->changePlayerTurn();
@@ -122,7 +122,7 @@ class Game
      * Get the defender player
      * @return IPlayer
      */
-    public function getDefender() : IPlayer
+    public function getDefender(): IPlayer
     {
         return $this->attacker->getType() == 'hero' ? $this->beast : $this->hero;
     }
@@ -130,7 +130,7 @@ class Game
     /**
      * @return int
      */
-    public function getRound() : int
+    public function getRound(): int
     {
         return $this->round;
     }
