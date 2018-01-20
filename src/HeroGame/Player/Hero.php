@@ -37,4 +37,43 @@ class Hero extends PlayerAbstract implements IPlayer
             $this->skills[] = SkillFactory::factory($skill);
         }
     }
+
+    /**
+     * Use skills when hero is attacker or defender
+     * @param  int $damage
+     * @param  string $type
+     */
+    public function useSkills(&$damage, $type)
+    {
+        $this->usedSkills = [];
+        foreach ($this->skills as $skill) {
+            $result = $skill->execute($damage, $type);
+            if ($result) {
+                $damage = $result;
+                $this->usedSkills[] = $skill->getName();
+            }
+        }
+    }
+
+    /**
+     * Defender fight method
+     * @param  IPlayer $attacker
+     * @return int
+     */
+    public function fight(IPlayer $attacker) : int
+    {
+        $isLucky = $this->checkPlayersLuck();
+
+        if (!$isLucky) {
+            $damage = $attacker->getStrength() - $this->getDefence();
+            $this->useSkills($damage, 'defence');
+
+            $damage = min($damage, $this->getHealth());
+            $this->receiveDamage($damage);
+
+            return $damage;
+        }
+
+        return 0;
+    }
 }

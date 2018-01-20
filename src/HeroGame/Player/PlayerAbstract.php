@@ -43,6 +43,11 @@ abstract class PlayerAbstract
     protected $skills = [];
 
     /**
+     * @var array
+     */
+    protected $usedSkills = [];
+
+    /**
      * Constructor class
      * @param array $config Player configuration
      */
@@ -167,5 +172,13 @@ abstract class PlayerAbstract
     public function getSkills() : array
     {
         return $this->skills;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUsedSkills() : array
+    {
+        return $this->usedSkills;
     }
 }

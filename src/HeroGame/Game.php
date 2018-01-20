@@ -55,6 +55,17 @@ class Game
         }
     }
 
+    public function decideWinner()
+    {
+        if($this->hero->getHealth() > $this->beast->getHealth()){
+          return $this->hero;
+        } else if($this->hero->getHealth() < $this->beast->getHealth()){
+          return $this->beast;
+        }
+
+        return null;
+    }
+
     /**
      * Check if the game is over
      * @return bool
@@ -81,10 +92,8 @@ class Game
         if (!$this->attacker) {
             $this->decideFirstPlayer();
         }
-        $skillUsed = [];
-        $damage = $this->attack();
 
-        $this->checkSkillOccurrences($damage, $skillUsed);
+        $damage = $this->getDefender()->fight($this->attacker);
 
         $roundData = [
           'round' => $this->round,
@@ -92,55 +101,12 @@ class Game
           'defender_health' => $this->getDefender()->getHealth(),
           'damage' => $damage,
           'is_lucky' => $this->getDefender()->isLucky(),
-          'skill_used' => implode(',', $skillUsed)
+          'skill_used' => $this->attacker->getUsedSkills() ? implode(',', $this->attacker->getUsedSkills()) : implode(',', $this->getDefender()->getUsedSkills())
         ];
 
         $this->changePlayerTurn();
 
         return $roundData;
-    }
-
-    /**
-     * Check if any skill is used this round
-     * @param  int    $damage
-     * @param  array  $skillUsed
-     */
-    public function checkSkillOccurrences(int &$damage, array &$skillUsed)
-    {
-        $type = 'attack';
-        $skills = $this->attacker->getSkills();
-        if(!$skills){
-          $type = 'defence';
-          $skills = $this->getDefender()->getSkills();
-        }
-
-        foreach($skills as $skill){
-          if($skill->getType() == $type && $ret = $skill->execute($damage)){
-            $damage = $ret;
-            $skillUsed[] = $skill->getName();
-          }
-        }
-    }
-
-    /**
-     *
-     * @return int Damage
-     */
-    public function attack() : int
-    {
-        $defender = $this->getDefender();
-        $isLucky = $defender->checkPlayersLuck();
-
-        if (!$isLucky) {
-            $damage = $this->attacker->getStrength() - $defender->getDefence();
-            $damage = min($damage, $defender->getHealth());
-
-            $defender->receiveDamage($damage);
-
-            return $damage;
-        }
-
-        return 0;
     }
 
     /**

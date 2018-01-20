@@ -66,4 +66,11 @@ interface IPlayer
      * @return bool
      */
     public function checkPlayersLuck() : bool;
+
+    /**
+     * Defender fight method
+     * @param  IPlayer $attacker
+     * @return int
+     */
+    public function fight(IPlayer $attacker) : int;
 }

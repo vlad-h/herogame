@@ -29,11 +29,12 @@ class MagicShield extends SkillAbstract implements ISkill
 
     /**
      * @param  int    $value
+     * @param  string $type
      * @return int|null
      */
-    public function execute(int $value)
+    public function execute(int $value, string $type)
     {
-        if ($this->checkProbability($this->probability)) {
+        if ($type == $this->type && $this->checkProbability($this->probability)) {
             return (int)($value / 2);
         }
         return null;

@@ -21,7 +21,7 @@ class StartGame extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("\n<info>--- HEROGAME ---</info>\n");
+        $output->writeln("\n--- HEROGAME ---\n");
         $game = new Game();
 
         $hero = PlayerFactory::factory(CONFIG['HERO'], 'hero');
@@ -30,17 +30,24 @@ class StartGame extends Command
         $game->setPlayers($hero, $beast);
         $firstPlayer = $game->decideFirstPlayer();
 
-        $output->writeln('<info>These are the players stats.</info>');
+        $output->writeln('These are the players stats.');
         $this->displayPlayers($output, $hero, $beast);
 
-        $output->writeln("<info>The first player that will attack is {$firstPlayer->getName()} ({$firstPlayer->getType()})</info>");
-        $output->writeln("\n<info>START BATTLE</info>\n");
-
+        $output->writeln("\nSTART BATTLE\n");
+        $output->writeln("The first player that will attack is {$firstPlayer->getName()} ({$firstPlayer->getType()})");
         $roundsData = [];
         while (!$game->isGameOver()) {
             $roundsData[] = $game->battleRound();
         }
-        $this->displayBattleRound($output, $roundsData);
+        $this->displayBattleRounds($output, $roundsData);
+
+        $output->writeln("\nGAME OVER\n");
+        $winner = $game->decideWinner();
+        if($winner){
+            $output->writeln("The winner is {$winner->getName()}");
+        } else {
+          $output->writeln("The battle is a DRAW");
+        }
     }
 
     protected function displayPlayers(OutputInterface $output, IPlayer $hero, IPlayer $beast)
@@ -61,7 +68,7 @@ class StartGame extends Command
         $table->render();
     }
 
-    protected function displayBattleRound(OutputInterface $output, array $roundsData)
+    protected function displayBattleRounds(OutputInterface $output, array $roundsData)
     {
         $table = new Table($output);
         $table->setHeaders([

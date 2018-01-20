@@ -27,6 +27,9 @@ abstract class SkillAbstract
       return $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function getType() : string
     {
       return $this->type;
